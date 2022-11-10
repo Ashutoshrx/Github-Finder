@@ -7,7 +7,7 @@ function UserResults({ userName }) {
 
     useEffect(() => {
         fetchGitUsers();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     if (!loading) {
