@@ -1,12 +1,13 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Home from './components/pages/Home';
 import Footer from './components/layout/Footer';
 import Navbar from './components/layout/Navbar';
 import Profile from './components/pages/Profile';
 import ErrorPage from './components/pages/ErrorPage';
+import { GithubProvider } from './context/github/GithubContext';
 function App() {
   return (
-    <BrowserRouter>
+    <GithubProvider>
       <Navbar />
       <Routes>
         <Route
@@ -35,7 +36,7 @@ function App() {
         ></Route>
       </Routes>
       <Footer />
-    </BrowserRouter>
+    </GithubProvider>
   );
 }
 

@@ -1,23 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
+import GithubContext from '../../context/github/GithubContext';
 import Card from '../layout/Card';
 
 function UserResults({ userName }) {
-    const [users, setUsers] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const { users, loading, fetchGitUsers } = useContext(GithubContext);
 
     useEffect(() => {
         fetchGitUsers();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const fetchGitUsers = async () => {
-        await fetch(`${process.env.REACT_APP_URL}/users`)
-            .then((response) => response.json())
-            .then((data) => {
-                setUsers(data);
-                setLoading(false);
-            })
-            .catch((error) => console.log(error));
-    };
     if (!loading) {
         return (
             <div className='grid grid-cols-1 gap-12 xl:grid-cols-4 '>
