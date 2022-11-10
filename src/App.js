@@ -3,6 +3,7 @@ import Home from './components/pages/Home';
 import Footer from './components/layout/Footer';
 import Navbar from './components/layout/Navbar';
 import Profile from './components/pages/Profile';
+import ErrorPage from './components/pages/ErrorPage';
 function App() {
   return (
     <BrowserRouter>
@@ -21,6 +22,14 @@ function App() {
           element={
             <>
               <Profile />
+            </>
+          }
+        ></Route>
+        <Route
+          path="/*"
+          element={
+            <>
+              <ErrorPage />
             </>
           }
         ></Route>

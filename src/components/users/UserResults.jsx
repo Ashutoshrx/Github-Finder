@@ -1,8 +1,7 @@
-import { info } from 'daisyui/src/colors/colorNames';
 import { useEffect, useState } from 'react';
 import Card from '../layout/Card';
 
-function UserResults() {
+function UserResults({ userName }) {
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -23,7 +22,7 @@ function UserResults() {
         return (
             <div className='grid grid-cols-1 gap-12 xl:grid-cols-4 '>
                 {users.map((user) =>
-                    <Card key={user.id} avatar={user.avatar_url} userName={user.login} />
+                    <Card key={user.id} user={user} />
                 )}
             </div>
         );

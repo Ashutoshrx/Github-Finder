@@ -1,14 +1,25 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-function Card({ avatar, userName }) {
+function Card({ user: { avatar_url, login } }) {
     return (
-        <div className="hero min-h-screen" style={{ backgroundImage: `url(${avatar})` }}>
-            <div className="hero-overlay bg-opacity-60"></div>
-            <div className="hero-content text-center text-neutral-content">
-                <div className="max-w-md">
-                    <h1 className="mb-5 text-5xl font-bold">{userName}</h1>
+        <div className='flex-row items-center space-x-4 card-body bg-slate-700'>
+            <div>
+                <div className="avatar">
+                    <div className='rounded-full shadow w-16 h-16'>
+                        <img src={avatar_url} alt="profile" />
+                    </div>
                 </div>
             </div>
+            <div>
+                <h2 className="card-title">
+                    {login}
+                </h2>
+                <Link to={`users/${login}`} className='text-base-content text-opacity-40 textarea-bordered'>
+                    Visit Profile
+                </Link>
+            </div>
+
         </div>
     );
 }
