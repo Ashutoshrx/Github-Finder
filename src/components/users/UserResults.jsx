@@ -1,14 +1,9 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import GithubContext from '../../context/github/GithubContext';
 import Card from '../layout/Card';
 
-function UserResults({ userName }) {
-    const { users, loading, fetchGitUsers } = useContext(GithubContext);
-
-    useEffect(() => {
-        fetchGitUsers();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+function UserResults() {
+    const { users, loading } = useContext(GithubContext);
 
     if (!loading) {
         return (
