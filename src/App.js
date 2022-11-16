@@ -6,6 +6,7 @@ import Profile from './components/pages/Profile';
 import ErrorPage from './components/pages/ErrorPage';
 import { GithubProvider } from './context/github/GithubContext';
 import { AlertProvider } from './context/alert/AlertContext';
+import UserItem from './components/users/UserItem';
 
 function App() {
   return (
@@ -26,6 +27,14 @@ function App() {
             element={
               <>
                 <Profile />
+              </>
+            }
+          ></Route>
+          <Route
+            path="/user/:login"
+            element={
+              <>
+                <UserItem />
               </>
             }
           ></Route>

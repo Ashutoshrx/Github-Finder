@@ -6,6 +6,7 @@ const GithubContext = createContext();
 export const GithubProvider = ({ children }) => {
   const initialState = {
     users: [],
+    user: {},
     loading: false,
   };
 
@@ -43,6 +44,19 @@ export const GithubProvider = ({ children }) => {
       .catch((error) => console.log(error));
   };
 
+  // Fetching a single user from the list of users
+  const fetchUser = async (login) => {
+    await fetch(`${process.env.REACT_APP_URL}/users/${login}`)
+      .then((response) => response.json())
+      .then((data) => {
+        dispatch({
+          type: 'GET_USER',
+          payload: data,
+        });
+      })
+      .catch((error) => console.log(error));
+  };
+
   const clearUserResults = () => {
     dispatch({
       type: 'CLEAR_USERS',
@@ -54,8 +68,10 @@ export const GithubProvider = ({ children }) => {
       value={{
         users: state.users,
         loading: state.loading,
+        user: state.user,
         searchUsersByUserName,
         clearUserResults,
+        fetchUser,
       }}
     >
       {children}

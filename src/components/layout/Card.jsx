@@ -15,7 +15,7 @@ function Card({ user: { avatar_url, login } }) {
                 <h2 className="card-title">
                     {login}
                 </h2>
-                <Link to={`users/${login}`} className='text-base-content text-opacity-40 textarea-bordered'>
+                <Link to={`user/${login}`} className='text-base-content text-opacity-40 textarea-bordered'>
                     Visit Profile
                 </Link>
             </div>

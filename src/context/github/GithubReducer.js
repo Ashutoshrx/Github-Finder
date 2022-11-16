@@ -1,9 +1,16 @@
 const gitReducer = (state, action) => {
+  console.log(state, action);
   switch (action.type) {
     case 'GET_USERS':
       return {
         ...state,
         users: action.payload,
+        loading: false,
+      };
+    case 'GET_USER':
+      return {
+        ...state,
+        user: action.payload,
         loading: false,
       };
     case 'SET_LOADING':
@@ -21,8 +28,8 @@ const gitReducer = (state, action) => {
     case 'CLEAR_USERS':
       return {
         ...state,
-        loading:false,
-        users:[]
+        loading: false,
+        users: [],
       };
 
     default:
