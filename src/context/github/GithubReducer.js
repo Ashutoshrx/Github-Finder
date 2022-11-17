@@ -1,5 +1,4 @@
 const gitReducer = (state, action) => {
-  console.log(state, action);
   switch (action.type) {
     case 'GET_USERS':
       return {

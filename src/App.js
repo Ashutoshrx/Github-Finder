@@ -7,6 +7,7 @@ import ErrorPage from './components/pages/ErrorPage';
 import { GithubProvider } from './context/github/GithubContext';
 import { AlertProvider } from './context/alert/AlertContext';
 import UserItem from './components/users/UserItem';
+import UserRepos from './components/users/UserRepos';
 
 function App() {
   return (
