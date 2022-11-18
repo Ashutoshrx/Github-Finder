@@ -22,7 +22,7 @@ function App() {
                 <Home />
               </div>
             }
-          ></Route>
+          />
           <Route
             path="/profile"
             element={
@@ -30,7 +30,7 @@ function App() {
                 <Profile />
               </>
             }
-          ></Route>
+          />
           <Route
             path="/user/:login"
             element={
@@ -38,15 +38,24 @@ function App() {
                 <UserItem />
               </>
             }
-          ></Route>
+          />
+          <Route
+            path="/user/:login/:repo"
+            element={
+              <>
+                <UserRepos />
+              </>
+            }
+          />
           <Route
             path="/*"
             element={
               <>
-                <ErrorPage />
+                {' '}
+                <ErrorPage />{' '}
               </>
             }
-          ></Route>
+          />
         </Routes>
         <Footer />
       </AlertProvider>

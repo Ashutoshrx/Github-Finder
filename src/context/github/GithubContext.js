@@ -7,23 +7,12 @@ export const GithubProvider = ({ children }) => {
   const initialState = {
     users: [],
     user: {},
+    repos: [],
     loading: false,
   };
 
   const [state, dispatch] = useReducer(gitReducer, initialState);
 
-  /*Fetch Initial Users from GitHub 
- const fetchGitUsers = async () => {
-    await fetch(`${process.env.REACT_APP_URL}/users`)
-      .then((response) => response.json())
-      .then((data) => {
-        dispatch({
-          type: 'GET_USERS',
-          payload:data
-        });
-      })
-      .catch((error) => console.log(error));
-  };*/
   // Fetch Users by username
   const searchUsersByUserName = async (userName) => {
     const params = new URLSearchParams({
@@ -46,6 +35,9 @@ export const GithubProvider = ({ children }) => {
 
   // Fetching a single user from the list of users
   const fetchUser = async (login) => {
+    dispatch({
+      type: 'SET_LOADING',
+    });
     await fetch(`${process.env.REACT_APP_URL}/users/${login}`)
       .then((response) => response.json())
       .then((data) => {
@@ -57,7 +49,25 @@ export const GithubProvider = ({ children }) => {
       .catch((error) => console.log(error));
   };
 
+  // Fetch user repositories of a particular user
+  const fetchRepo = async (login) => {
+    dispatch({
+      type: 'SET_LOADING',
+    });
+    await fetch(`${process.env.REACT_APP_URL}/users/${login}/repos`)
+      .then((response) => response.json())
+      .then((data) => {
+        dispatch({
+          type: 'FETCH_REPOS',
+          payload: data,
+        });
+      });
+  };
+
   const clearUserResults = () => {
+    dispatch({
+      type: 'SET_LOADING',
+    });
     dispatch({
       type: 'CLEAR_USERS',
     });
@@ -69,9 +79,11 @@ export const GithubProvider = ({ children }) => {
         users: state.users,
         loading: state.loading,
         user: state.user,
+        repos: state.repos,
         searchUsersByUserName,
         clearUserResults,
         fetchUser,
+        fetchRepo,
       }}
     >
       {children}

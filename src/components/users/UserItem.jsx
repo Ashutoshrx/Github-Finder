@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, Outlet, useParams } from 'react-router-dom';
 import GithubContext from '../../context/github/GithubContext';
 
 function UserItem() {
-  const { fetchUser, user } = useContext(GithubContext);
+  const { fetchUser, user, repos } = useContext(GithubContext);
   const params = useParams();
   useEffect(() => {
     fetchUser(params.login);
@@ -37,8 +37,9 @@ function UserItem() {
             </div>
             <div className="absolute bottom-12 right-12 h-11 w-16">
               <button className='btn btn-outline btn-success'>
-                <Link to={`/repositories`}>Show Repositories</Link>
+                <Link to={`/user/${user.login}/repositories`}>Show Repositories</Link>
               </button>
+              <Outlet />
             </div>
           </div>
         </div>
