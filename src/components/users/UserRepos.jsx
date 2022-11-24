@@ -17,7 +17,6 @@ function UserRepos() {
                 <table className="border-separate border-spacing-x-0.5 border border-sky-400">
                     <thead>
                         <tr>
-                            <th className="border border-slate-600">COUNT</th>
                             <th className="border border-slate-600">REPOSITORIES</th>
                             <th className="border border-slate-600">DATE CREATED</th>
                         </tr>
@@ -25,7 +24,6 @@ function UserRepos() {
                     <tbody >
                         {repos.map(repo =>
                             <tr key={repo.id}>
-                                <td id='tdIdCon' className="border border-slate-700 ...">1</td>
                                 <td className="border border-slate-700 ...">{repo.name.toUpperCase()}</td>
                                 <td className="border border-slate-700 ...">{repo.created_at.substring(0, 4)}</td>
                             </tr>
