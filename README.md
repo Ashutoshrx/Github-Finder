@@ -1,8 +1,8 @@
-# This App is deployed at: https://singular-pavlova-5ea924.netlify.app/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
+This app is depoyed at https://github-finder-zeta-puce.vercel.app/ and https://singular-pavlova-5ea924.netlify.app/
 ## Available Scripts
 
 In the project directory, you can run:
